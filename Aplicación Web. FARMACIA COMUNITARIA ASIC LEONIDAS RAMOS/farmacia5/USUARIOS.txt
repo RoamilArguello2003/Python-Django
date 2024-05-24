@@ -1,0 +1,23 @@
+SUPERUSER: SuperUser Prime
+usuario: V-00000000
+pass: superuser
+
+ADMINISTRADOR: Administrador Prime
+usuario: V-00000001
+pass: administrador
+
+ALMACENISTA: Almacenista Prime
+usuario: V-00000002
+pass: almacenista
+
+ATENCION AL CLIENTE: Atencion Prime
+usuario: V-00000003
+pass: atencion
+
+JEFE DE COMUNIDAD: Jefe Prime
+usuario: V-00000004
+pass: jefedecomunidad
+
+PACIENTE: Paciente Prime
+usuario: V-00000005
+pass: paciente
