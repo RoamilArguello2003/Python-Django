@@ -1,0 +1,74 @@
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button title="Cerrar" aria-label="Cerrar" class="close" type="button" onclick="cerrar_modal_creacionUnidad_Productiva();">
+        <spam aria-hidden="true">&times;</spam>
+      </button>
+      <h2 class="modal-title"> Registrar Unidad Productiva </h2>
+    </div>
+    <form id="form_creacionUnidad_Productiva" action="{% url 'registrar_Unidad_Productiva' %}" method="POST">{% csrf_token %}
+      <div class="modal-body">
+        
+        <p>
+          {{ form.rif_uni.label }}
+          <div class="input-group">
+            <div class="w-25">{{ form.tipo_rif }}</div>
+            <div class="w-75" onkeypress="return soloNumeros(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.rif_uni }}</div>
+          </div>
+          <div class="alert alert-danger error-rif_uni d-none"></div>
+        </p>
+
+        <p>
+          {{ form.cod_prod.label }}
+          <div class="input-group">
+            <div class="w-75" oncopy="return false" onpaste="return false" oncut="return false">{{ form.cod_prod }}</div>
+            <a class="nav-link w-25" onclick="abrir_modal_creacionProductor('{% url 'registrar_Productor' %}');" title="Añadir" aria-label="Añadir">
+              <i class="fa fa-plus"></i>
+            </a>
+          </div>
+          <div class="alert alert-danger error-cod_prod d-none"></div>
+        </p>
+
+        <p>
+          {{ form.cod_res.label }}
+          <div class="input-group">
+            <div class="w-75" oncopy="return false" onpaste="return false" oncut="return false">{{ form.cod_res }}</div>
+            <a class="nav-link w-25" onclick="abrir_modal_creacionResponsable('{% url 'registrar_Responsable' %}');" title="Añadir" aria-label="Añadir">
+              <i class="fa fa-plus"></i>
+            </a>
+          </div>
+          <div class="alert alert-danger error-cod_res d-none"></div>
+        </p>
+
+        <p>
+          {{ form.nom_uni.label }}
+          <div onkeypress="return soloLetras(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.nom_uni }}</div>
+          <div class="alert alert-danger error-nom_uni d-none"></div>
+        </p>
+
+        <p>
+          {{ form.estado_uni.label }}
+          <div onkeypress="return soloLetras(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.estado_uni }}</div>
+          <div class="alert alert-danger error-estado_uni d-none"></div>
+        </p>
+
+        <p>
+          {{ form.municipio_uni.label }}
+          <div onkeypress="return soloLetras(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.municipio_uni }}</div>
+          <div class="alert alert-danger error-municipio_uni d-none"></div>
+        </p>
+
+        <p>
+          {{ form.parroquia_uni.label }}
+          <div onkeypress="return soloLetras(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.parroquia_uni }}</div>
+          <div class="alert alert-danger error-parroquia_uni d-none"></div>
+        </p>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" type="button" onclick="cerrar_modal_creacionUnidad_Productiva();">Cancelar</button>
+        <button id="boton_creacion" class="btn btn-primary" type="button" onclick="registrarUnidad_Productiva();">Confirmar</button>
+        </div>
+    </form>
+  </div>
+</div>

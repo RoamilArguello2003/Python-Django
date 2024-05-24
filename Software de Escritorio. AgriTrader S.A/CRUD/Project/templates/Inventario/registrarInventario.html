@@ -1,0 +1,37 @@
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button title="Cerrar" aria-label="Cerrar" class="close" type="button" onclick="cerrar_modal_creacionInventario();">
+        <spam aria-hidden="true">&times;</spam>
+      </button>
+      <h2 class="modal-title"> Registrar Inventario </h2>
+    </div>
+    <form id="form_creacionInventario" action="{% url 'registrar_Inventario' %}" method="POST">{% csrf_token %}
+      <div class="modal-body">
+        
+        <p>
+          {{ form.cod_artprod.label }}
+          <div oncopy="return false" onpaste="return false" oncut="return false">{{ form.cod_artprod }}</div>
+          <div class="alert alert-danger error-cod_artprod d-none"></div>
+        </p>
+        
+        <p>
+          {{ form.cant_artprod.label }}
+          <div onkeypress="return soloNumeros(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.cant_artprod }}</div>
+          <div class="alert alert-danger error-cant_artprod d-none"></div>
+        </p>
+        
+        <p>
+          {{ form.cod_uni.label }}
+          <div oncopy="return false" onpaste="return false" oncut="return false">{{ form.cod_uni }}</div>
+          <div class="alert alert-danger error-cod_uni d-none"></div>
+        </p>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" type="button" onclick="cerrar_modal_creacionInventario();">Cancelar</button>
+        <button id="boton_creacion" class="btn btn-primary" type="button" onclick="registrarInventario();">Confirmar</button>
+        </div>
+    </form>
+  </div>
+</div>

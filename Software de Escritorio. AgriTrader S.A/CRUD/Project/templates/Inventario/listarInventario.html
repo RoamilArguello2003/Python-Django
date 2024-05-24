@@ -1,0 +1,59 @@
+{% extends "Inicio/index.html" %}
+{% load static %}
+
+{% block title %} Listado de Inventarios {% endblock title %}
+
+{% block extra_css %}
+	<link rel="stylesheet" href="{% static 'css/lib/datatable/dataTables.bootstrap.min.css'  %}">
+{% endblock extra_css %}
+
+{% block body %}
+<div class="card">
+	<div class="card-header">
+		<div class="row">
+			<div class="col align-self-start">
+				<a class="nav-link" onclick="abrir_modal_creacionInventario('{% url 'registrar_Inventario' %}');" title="Añadir Inventario" aria-label="Añadir Inventario">
+	              <i class="fa fa-plus"></i>
+	            </a>
+			</div>
+			<div class="col align-self-center">
+				<strong class="card-title"> Listado de Inventarios </strong>
+			</div>
+		</div>
+	</div>
+	<div class="table-stats order-table ov-h">
+		<table id="tabla_inventarios" class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Articulo</th>
+					<th>Cantidad</th>
+					<th>Rif de la Unidad</th>
+					<th>Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="modal fade" id="creacionInventario" tabindex="-1" role="dialog" aria-hidden="true">
+	
+</div>
+
+<div class="modal fade" id="edicionInventario" tabindex="-1" role="dialog" aria-hidden="true">
+	
+</div>
+
+<div class="modal fade" id="eliminacionInventario" tabindex="-1" role="dialog" aria-hidden="true">
+	
+</div>
+
+{% endblock body %}
+
+{% block extrajs %}
+	<script src="{% static 'js/lib/data-table/jquery.dataTables.min.js' %}"></script>
+	<script src="{% static 'js/lib/data-table/dataTables.bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/inventario.js' %}"></script>
+{% endblock extrajs %}

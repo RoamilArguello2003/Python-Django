@@ -1,0 +1,70 @@
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button title="Cerrar" aria-label="Cerrar" class="close" type="button" onclick="cerrar_modal_creacionProductor();">
+        <spam aria-hidden="true">&times;</spam>
+      </button>
+      <h2 class="modal-title"> Registrar Productor </h2>
+    </div>
+    <form id="form_creacionProductor" action="{% url 'registrar_Productor' %}" method="POST">{% csrf_token %}
+      <div class="modal-body">
+
+        <p>
+          {{ form.cedula_prod.label }}
+          <div class="input-group">
+            <div class="w-25">{{ form.tipo_cedula_prod }}</div>
+            <div class="w-75" onkeypress="return soloNumeros(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.cedula_prod }}</div>
+          </div>
+          <div class="alert alert-danger error-cedula_prod d-none"></div>
+        </p>
+
+        <p>
+          {{ form.nom_prod.label }}
+          <div onkeypress="return soloLetras(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.nom_prod }}</div>
+          <div class="alert alert-danger error-nom_prod d-none"></div>
+        </p>
+
+        <p>
+          {{ form.apell_prod.label }}
+          <div onkeypress="return soloLetras(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.apell_prod }}</div>
+          <div class="alert alert-danger error-apell_prod d-none"></div>
+        </p>
+
+        <p>
+          {{ form.direccion_prod.label }}
+          <div oncopy="return false" onpaste="return false" oncut="return false">{{ form.direccion_prod }}</div>
+          <div class="alert alert-danger error-direccion_prod d-none"></div>
+        </p>
+
+        <p>
+          {{ form.telef_prod.label }}
+          <div class="input-group">
+            <div class="w-25">{{ form.tipo_telef_prod }}</div>
+            <div class="w-75" onkeypress="return soloNumeros(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.telef_prod }}</div>
+          </div>
+          <div class="alert alert-danger error-telef_prod d-none"></div>
+        </p>
+
+        <p>
+          {{ form.movil_prod.label }}
+          <div class="input-group">
+            <div class="w-25">{{ form.tipo_movil_prod }}</div>
+            <div class="w-75" onkeypress="return soloNumeros(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.movil_prod }}</div>
+          </div>
+          <div class="alert alert-danger error-movil_prod d-none"></div>
+        </p>
+
+        <p>
+          {{ form.correo_prod.label }}
+          <div oncopy="return false" onpaste="return false" oncut="return false">{{ form.correo_prod }}</div>
+          <div class="alert alert-danger error-correo_prod d-none"></div>
+        </p>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" type="button" onclick="cerrar_modal_creacionProductor();">Cancelar</button>
+        <button id="boton_creacion" class="btn btn-primary" type="button" onclick="registrarProductor();">Confirmar</button>
+        </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,197 @@
+{% load static %}
+<!Doctype html>
+<html class="no-js" lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %} Bienvenido a Agritrader.S.A {% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'images/icon.ico' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="{% static 'css/cs-skin-elastic.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}
+    {% endblock extra_css %}
+</head>
+
+<body>
+    <!-- Left Panel -->
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+            <div id="main-menu" class="main-menu">
+                <ul class="nav navbar-nav">
+
+                    <li class="active">
+                        <a href="{% url 'home' %}"><i class="menu-icon fa fa-home"></i>Inicio</a>
+                    </li>
+
+                    <li class="menu-item-has-children dropdown">
+                       <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-book"></i>Registros</a>
+                       <ul class="sub-menu children dropdown-menu">
+                           <li><i class="fa fa-table"></i><a href="{% url 'listar_Productor' %}">Productores</a></li>
+                           <li><i class="fa fa-table"></i><a href="{% url 'listar_Responsable' %}">Responsables</a></li>
+                           <li><i class="fa fa-table"></i><a href="{% url 'listar_Unidad_Productiva' %}">Unidades Productiva</a></li>
+                           <li><i class="fa fa-table"></i><a href="{% url 'listar_Articulo_Productor' %}">Maquinarias e implementos del Productor</a></li>
+                       </ul>
+                    </li>
+
+                    <li class="menu-item-has-children dropdown">
+                       <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Procesos</a>
+                       <ul class="sub-menu children dropdown-menu">
+                           <li><i class="fa fa-table"></i><a href="{% url 'listar_Censo' %}">Censos</a></li>
+                           <li><i class="fa fa-table"></i><a href="{% url 'listar_Inventario' %}">Inventarios</a></li>
+                           <li><i class="fa fa-table"></i><a href="{% url 'listar_Necesidad_Productor' %}">Necesidades del Productor</a></li>
+                       </ul>
+                    </li>
+
+                    <li class="menu-item-has-children dropdown">
+                       <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-archive"></i>Reportes</a>
+                       <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-table"></i><a href="{% url 'reporteproductores' %}">Reporte de Productores</a></li>
+                            <li><i class="fa fa-table"></i><a href="{% url 'reporteunidadprod' %}">Reporte Unidades Productivas con su productor</a></li>
+                            <li><i class="fa fa-table"></i><a href="{% url 'reporteunidadinven' %}">Reporte Unidades Productivas con inventario</a></li>
+                            <li><i class="fa fa-table"></i><a href="{% url 'reporteunidadmuni' %}">Reporte Unidades Productivas Por municipio</a></li>
+                            <li><i class="fa fa-table"></i><a href="{% url 'reporte_necesidades' %}">Reporte Necesidades del productor</a></li>
+                       </ul>
+                    </li>
+
+                    <hr width="100%">
+
+                    {% if request.user.is_staff %}
+
+                    <li class="menu-item-has-children dropdown">
+                       <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-book"></i>Registros Admin</a>
+                       <ul class="sub-menu children dropdown-menu">
+                           <li><i class="fa fa-table"></i><a href="{% url 'listar_Cultivo' %}">Cultivos</a></li>
+                           <li><i class="fa fa-table"></i><a href="{% url 'listar_Detalle' %}">Detalle de cultivo</a></li>
+                           <li><i class="fa fa-table"></i><a href="{% url 'listar_Marca_Articulo' %}">Marcas</a></li>
+                           <li><i class="fa fa-table"></i><a href="{% url 'listar_Modelo_Articulo' %}">Modelos</a></li>
+                           <li><i class="fa fa-table"></i><a href="{% url 'listar_Articulo_Empresa' %}">Articulos de la Empresa</a></li>
+                       </ul>
+                    </li>
+
+                    {% endif %}
+
+                    <li class="menu-item-has-children dropdown">
+                       <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Soporte</a>
+                       <ul class="sub-menu children dropdown-menu">
+                            {% if request.user.is_staff %}
+                           <li><i class="fa fa-table"></i><a href="{% url 'inicio_Usuario' %}">Gestión de usuarios</a></li>
+                           {% endif %}
+                           <li><i class="fa fa-table"></i><a href="{% url 'cambiar_Mi_Contraseña' request.user.pk %}">Cambiar Contraseña</a></li> 
+                           <li><i class="fa fa-table"></i><a href="{% url 'export_db' %}">Respaldo</a></li>
+                           <li><i class="fa fa-table"></i><a href="{% url 'import_db' %}">Restauración</a></li>
+                    </li>
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside>
+    <!-- /#left-panel -->
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+        <!-- Header-->
+        <header id="header" class="header">
+            <div class="top-left">
+                <div class="navbar-header">
+                    <a id="menuToggle" class="menutoggle col"><i class="fa fa-bars"></i></a>
+                    <a class="navbar-brand col" href="{% url 'home' %}"><img src="{% static 'images/logo.jpg' %}"></a>
+                </div>
+            </div>
+            <div class="top-right">
+                <div class="header-menu">
+                	<div id="reloj" class="navbar-brand"></div>
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src= "{% get_media_prefix %}{{ request.user.imagen }}" onerror="this.src='{% static 'images/admin.png' %}';">
+                        </a>
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="{% url 'cambiar_Perfil' request.user.pk %}"><i class="fa fa-user"></i>Cambiar Perfil</a>
+                            <a class="nav-link" href="{% url 'cambiar_Mi_Contraseña' request.user.pk %}"><i class="fa fa-lock"></i>Cambiar Contraseña</a>
+                            <a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-power-off"></i>Cerrar sesion</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <div>
+                <div class="row">
+                    <div class="col-lg-12">
+                      {% block body %}
+                        <div class="col-md-12 prueba">
+                            <div class="card bg-primary">
+                                <div class="card-body">
+                                    <blockquote class="blockquote mb-0 text-light text-center">
+                                        <h1 class="text-light"><strong>{{ user.nombre }}, BIENVENIDO A AGRITRADER.S.A</strong></h1>
+                                        {% if request.user.is_staff %}
+                                            <h3 class="text-light">Cuentas con todos los beneficios de un Administrador.</h3>
+                                        {% endif %}
+                                        <footer class="blockquote-footer text-light">Agritrader somos todos.</footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                      {% endblock body %}
+                </div>
+            </div>
+        </div>
+        <!-- /.content -->
+        <div class="clearfix"></div>
+        <!-- Footer -->
+        <footer class="site-footer">
+        </footer>
+        <!-- /.site-footer -->
+    </div>
+    <!-- /#right-panel -->
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+	<script>
+	function actualizarReloj() {
+		var hoy = new Date();
+        var dia = hoy.getDate();
+        var mes = hoy.getMonth() + 1; // Se suma 1 ya que los meses empiezan en 0
+        var anio = hoy.getFullYear(); 
+		var hora = hoy.getHours();
+		var minutos = hoy.getMinutes();
+		var segundos = hoy.getSeconds();
+		var ampm = hora >= 12 ? 'PM' : 'AM';  // Determina si es AM o PM
+
+		// Convertir de formato de 24 horas a 12 horas
+		hora = hora % 12;
+		hora = hora ? hora : 12;  // Si es 0, se muestra como 12 en formato 12 horas
+		minutos = agregarCeros(minutos);
+		segundos = agregarCeros(segundos);
+
+		// Mostrar la hora en el elemento <div> con el id "reloj"
+		document.getElementById("reloj").innerHTML = dia + "/" + mes + "/" + anio + " " + hora + ":" + minutos + ":" + segundos + " " + ampm;
+	}
+
+	function agregarCeros(i) {
+		if (i < 10) {
+			i = "0" + i;
+		}
+		return i;
+	}
+
+	setInterval(actualizarReloj, 1000);
+	</script>
+
+    {% block extrajs %}
+    {% endblock extrajs %}
+</body>
+</html>

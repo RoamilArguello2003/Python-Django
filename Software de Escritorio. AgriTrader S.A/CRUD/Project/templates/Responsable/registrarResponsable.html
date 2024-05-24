@@ -1,0 +1,70 @@
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button title="Cerrar" aria-label="Cerrar" class="close" type="button" onclick="cerrar_modal_creacionResponsable();">
+        <spam aria-hidden="true">&times;</spam>
+      </button>
+      <h2 class="modal-title"> Registrar Responsable </h2>
+    </div>
+    <form id="form_creacionResponsable" action="{% url 'registrar_Responsable' %}" method="POST">{% csrf_token %}
+      <div class="modal-body">
+
+        <p>
+          {{ form.cedula_res.label }}
+          <div class="input-group">
+            <div class="w-25">{{ form.tipo_cedula_res }}</div>
+            <div class="w-75" onkeypress="return soloNumeros(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.cedula_res }}</div>
+          </div>
+          <div class="alert alert-danger error-cedula_res d-none"></div>
+        </p>
+
+        <p>
+          {{ form.nom_res.label }}
+          <div onkeypress="return soloLetras(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.nom_res }}</div>
+          <div class="alert alert-danger error-nom_res d-none"></div>
+        </p>
+
+        <p>
+          {{ form.apell_res.label }}
+          <div onkeypress="return soloLetras(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.apell_res }}</div>
+          <div class="alert alert-danger error-apell_res d-none"></div>
+        </p>
+
+        <p>
+          {{ form.direccion_res.label }}
+          <div oncopy="return false" onpaste="return false" oncut="return false">{{ form.direccion_res }}</div>
+          <div class="alert alert-danger error-direccion_res d-none"></div>
+        </p>
+
+        <p>
+          {{ form.telef_res.label }}
+          <div class="input-group">
+            <div class="w-25">{{ form.tipo_telef_res }}</div>
+            <div class="w-75" onkeypress="return soloNumeros(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.telef_res }}</div>
+          </div>
+          <div class="alert alert-danger error-telef_res d-none"></div>
+        </p>
+
+        <p>
+          {{ form.movil_res.label }}
+          <div class="input-group">
+            <div class="w-25">{{ form.tipo_movil_res }}</div>
+            <div class="w-75" onkeypress="return soloNumeros(event)" oncopy="return false" onpaste="return false" oncut="return false">{{ form.movil_res }}</div>
+          </div>
+          <div class="alert alert-danger error-movil_res d-none"></div>
+        </p>
+
+        <p>
+          {{ form.correo_res.label }}
+          <div oncopy="return false" onpaste="return false" oncut="return false">{{ form.correo_res }}</div>
+          <div class="alert alert-danger error-correo_res d-none"></div>
+        </p>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" type="button" onclick="cerrar_modal_creacionResponsable();">Cancelar</button>
+        <button id="boton_creacion" class="btn btn-primary" type="button" onclick="registrarResponsable();">Confirmar</button>
+        </div>
+    </form>
+  </div>
+</div>

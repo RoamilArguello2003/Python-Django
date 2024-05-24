@@ -1,0 +1,26 @@
+{% extends "Inicio/index.html" %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generar Reporte</title>
+</head>
+<body>
+    <h1 class="card-title">Generar Reporte</h1>
+    <form method="POST" action="{% url 'reporteunidadmuni' %}">
+        {% csrf_token %}
+        <label for="municipio">Seleccione el municipio:</label>
+        <select id="municipio" name="municipio">
+            {% for municipio in municipios %}
+                <option value="{{ municipio }}">{{ municipio }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <input class="btn btn-primary" type="submit" value="Ver Reporte">
+    </form>
+</body>
+</html>
+
+{% endblock body %}

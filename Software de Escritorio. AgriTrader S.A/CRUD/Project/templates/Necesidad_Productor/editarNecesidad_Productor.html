@@ -1,0 +1,43 @@
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button title="Cerrar" aria-label="Cerrar" class="close" type="button" onclick="cerrar_modal_edicionNecesidad_Productor();">
+        <spam aria-hidden="true">&times;</spam>
+      </button>
+      <h2 class="modal-title"> Editar Necesidad: {{ necesidad_productor }} </h2>
+    </div>
+    <form id="form_edicionNecesidad_Productor" action="{% url 'editar_Necesidad_Productor' necesidad_productor.pk %}" method="POST">{% csrf_token %}
+      <div class="modal-body">
+        
+        <p>
+          {{ form.fecha_nec.label }}
+          <div oncopy="return false" onpaste="return false" oncut="return false">{{ form.fecha_nec }}</div>
+          <div class="alert alert-danger error-fecha_nec d-none"></div>
+        </p>
+
+        <p>
+          {{ form.cod_uni.label }}
+          <div oncopy="return false" onpaste="return false" oncut="return false">{{ form.cod_uni }}</div>
+          <div class="w-75 alert alert-danger error-cod_uni d-none"></div>
+        </p>
+
+        <p>
+          {{ form.cod_art.label }}
+          <div oncopy="return false" onpaste="return false" oncut="return false">{{ form.cod_art }}</div>
+          <div class="alert alert-danger error-cod_art d-none"></div>
+        </p>
+
+        <p>
+          {{ form.canti_art.label }}
+          <div oncopy="return false" onpaste="return false" oncut="return false">{{ form.canti_art }}</div>
+          <div class="alert alert-danger error-canti_art d-none"></div>
+        </p>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" type="button" onclick="cerrar_modal_edicionNecesidad_Productor();">Cancelar</button>
+        <button id="boton_creacion" class="btn btn-primary" type="button" onclick="editarNecesidad_Productor();">Confirmar</button>
+        </div>
+    </form>
+  </div>
+</div>

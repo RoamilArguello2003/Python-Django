@@ -1,0 +1,72 @@
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button title="Cerrar" aria-label="Cerrar" class="close" type="button" onclick="cerrar_modal_edicionCenso();">
+        <spam aria-hidden="true">&times;</spam>
+      </button>
+      <h2 class="modal-title"> Editar Censo: {{ censo }} </h2>
+    </div>
+    <form id="form_edicionCenso" action="{% url 'editar_Censo' censo.pk %}" method="POST">{% csrf_token %}
+      <div class="modal-body">
+
+        <p>
+          {{ form.cod_uni.label }}
+          <div oncopy="return false" onpaste="return false" oncut="return false">{{ form.cod_uni }}</div>
+          <div class="alert alert-danger error-cod_uni d-none"></div>
+        </p>
+
+        <p>
+          {{ form.cod_det.label }}
+          <div oncopy="return false" onpaste="return false" oncut="return false">{{ form.tipo_det }}</div>
+          <div oncopy="return false" onpaste="return false" oncut="return false">{{ form.cod_det }}</div>
+          <div class="alert alert-danger error-cod_det d-none"></div>
+        </p>
+
+        <p>
+          {{ form.ganado_leche.label }}
+          <div oncopy="return false" onpaste="return false" oncut="return false">{{ form.ganado_leche }}</div>
+          <div class="alert alert-danger error-ganado_leche d-none"></div>
+        </p>
+
+        <p>
+          {{ form.ganado_carne.label }}
+          <div oncopy="return false" onpaste="return false" oncut="return false">{{ form.ganado_carne }}</div>
+          <div class="alert alert-danger error-ganado_carne d-none"></div>
+        </p>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" type="button" onclick="cerrar_modal_edicionCenso();">Cancelar</button>
+        <button id="boton_creacion" class="btn btn-primary" type="button" onclick="editarCenso();">Confirmar</button>
+        </div>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var tipo_det_field0 = document.getElementById("id_tipo_det_0");
+  var tipo_det_field1 = document.getElementById("id_tipo_det_1");
+  var cod_det_field = document.getElementById("id_cod_det");
+
+  if (tipo_det_field0.checked && tipo_det_field0.value === "SI") {
+      cod_det_field.style.display = "block";}
+
+  if (tipo_det_field1.checked && tipo_det_field1.value === "NO") {
+      cod_det_field.style.display = "none";}
+  
+  // Comprueba qué opción está seleccionada al principio y muestra u oculta los campos según corresponda
+  tipo_det_field0.onchange = function () {
+    if (tipo_det_field0.checked && tipo_det_field0.value === "SI") {
+      cod_det_field.style.display = "block";
+    } else {
+      cod_det_field.style.display = "none";
+    }
+  };
+  tipo_det_field1.onchange = function () {
+    if (tipo_det_field1.checked && tipo_det_field1.value === "NO") {
+      cod_det_field.style.display = "none";
+    } else {
+      cod_det_field.style.display = "block";
+    }
+  };
+</script>

@@ -1,0 +1,75 @@
+{% extends "Inicio/index.html" %}
+{% load static %}
+
+{% block title %} Listado de Necesidades {% endblock title %}
+
+{% block extra_css %}
+	<link rel="stylesheet" href="{% static 'css/lib/datatable/dataTables.bootstrap.min.css'  %}">
+{% endblock extra_css %}
+
+{% block body %}
+<div class="card">
+	<div class="card-header">
+		<div class="row">
+			<div class="col align-self-start">
+				<a class="nav-link" onclick="abrir_modal_creacionNecesidad_Productor('{% url 'registrar_Necesidad_Productor' %}');" title="Añadir Necesidad" aria-label="Añadir Necesidad">
+	              <i class="fa fa-plus"></i>
+	            </a>
+			</div>
+			<div class="col align-self-center">
+				<strong class="card-title"> Listado de Necesidades </strong>
+			</div>
+		</div>
+	</div>
+	<div class="table-stats order-table ov-h">
+		<table id="tabla_necesidades_productor" class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Fecha</th>
+					<th>Unidad</th>
+					<th>Articulo</th>
+					<th>Cantidad</th>
+					<th>Opciones</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="modal fade" id="creacionNecesidad_Productor" tabindex="-1" role="dialog" aria-hidden="true">
+	
+</div>
+
+<div class="modal fade" id="edicionNecesidad_Productor" role="dialog">
+	
+</div>
+
+<div class="modal fade" id="eliminacionNecesidad_Productor" role="dialog">
+	
+</div>
+
+<div class="modal fade" id="creacionProductor" tabindex="-1" role="dialog" aria-hidden="true">
+	
+</div>
+
+<div class="modal fade" id="creacionResponsable" tabindex="-1" role="dialog" aria-hidden="true">
+	
+</div>
+
+<div class="modal fade" id="creacionUnidad_Productiva" tabindex="-1" role="dialog" aria-hidden="true">
+	
+</div>
+
+{% endblock body %}
+
+{% block extrajs %}
+	<script src="{% static 'js/lib/data-table/jquery.dataTables.min.js' %}"></script>
+	<script src="{% static 'js/lib/data-table/dataTables.bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/necesidad_Productor.js' %}"></script>
+	<script src="{% static 'js/productor.js' %}"></script>
+	<script src="{% static 'js/responsable.js' %}"></script>
+	<script src="{% static 'js/unidad_Productiva.js' %}"></script>
+{% endblock extrajs %}
