@@ -1,0 +1,7 @@
+SUPERUSER: SuperUser Prime
+usuario: superuser
+pass: superuser
+
+Usuario: Usuario Prime
+usuario: usuario
+pass: usuario
